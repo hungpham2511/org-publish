@@ -29,7 +29,8 @@ Discrete-time signal A discrete-time signal \(x[n]\) is essentially an array of 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hungpham2511.github.io/org-publish/posts/20200611132621-dsp_2_systems/</guid>
-      <description>Continuous time system, s-domain. With the basis in physics, allowing physical intuition that aids understanding.
+      <description>Tests
+Continuous time system, s-domain. With the basis in physics, allowing physical intuition that aids understanding.
 Discrete time system z-domain. Allow fast and convenient implementation for digital computational systems.
 Conversion with bilinear transform.
 Frequency response of continuous time system G(s) is basically G(jw) where w is the angular velocity in radian per second.
