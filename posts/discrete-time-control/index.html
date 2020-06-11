@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" href="https://hungpham2511.github.io/org-publish/favicon.ico">
+    
+    <link rel="stylesheet" href="/org-publish/css/style.min.css">
+
+    <title>DSP 1: The absolute fundamentals</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://hungpham2511.github.io/org-publish/">My New Hugo Site</a></h2>
+    <nav>
+        <ul>
+            <li><a href="https://hungpham2511.github.io/org-publish/">posts</a></li>
+            
+            <li>
+                <a href="https://hungpham2511.github.io/org-publish/pages/">Pages</a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>DSP 1: The absolute fundamentals</h1></header><p>In this short note, I recap the absolute minimum understanding to work
+with discrete-time signals and systems. These are by no mean complete,
+and might not be completely technically correct, as sometimes it&rsquo;s
+easier to state a less precise statement for the sake of clarity. Now,
+for a very nice course on this topic have a look at [this MIT open
+courseware][1] or this [coursera course from EPFL][coursera]</p>
+<h2 id="discrete-time-signal">Discrete-time signal</h2>
+<p>A discrete-time signal \(x[n]\) is essentially an array of
+floats. Though if you are familiar with thinking an array starts
+from 0, it&rsquo;s important to notice that in DSP, a signal is consider
+from time negative infinity to infinity. That is</p>
+<p>\[x[n], \text{where } -\infty &lt; n &lt; \infty.\]</p>
+<h2 id="linear-time-invariant-discrete-time-system">Linear time-invariant discrete-time system</h2>
+<p>A discrete-time system is an abstract mapping that map a
+discrete-time signal to another, in mathematical notation we can
+write</p>
+<p>\[y[n] = \mathcal{H}\{x[n]\}.\]</p>
+<p>Most engineering marvels rest on simple, powerful mathematical
+structures. Linearity is perharps the most important
+characteristics. We restrict our attention to the class of <strong>linear
+discrete-time systems</strong>, which intuitively satisfies:</p>
+<p>\[\mathcal{H}\{\alpha x[n] + \beta y[n]\} = \alpha \mathcal{H}\{x[n]\} + \beta \mathcal{H}\{y[n]\}\]</p>
+<p>We even restrict further to time-invariant systems, which satisfies:</p>
+<p>\[\mathcal{H}\{x[n - k]\} = y[n - k] \]</p>
+<h2 id="related">Related</h2>
+<p><a href="/org-publish/posts/20200611132621-dsp_2_systems/">Dsp2Systems</a></p>
+</article>
+
+        </main><footer id="footer">
+    
+    
+<script src="https://hungpham2511.github.io/org-publish/js/mathjax-config.js"></script>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+</footer>
+</body>
+</html>
