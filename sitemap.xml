@@ -3,43 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://hungpham2511.github.io/org-publish/categories/blog/</loc>
+    <lastmod>2020-06-12T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hungpham2511.github.io/org-publish/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://hungpham2511.github.io/org-publish/posts/discrete-time-control/</loc>
-  </url>
-  
-  <url>
-    <loc>https://hungpham2511.github.io/org-publish/posts/20200611132621-dsp_2_systems/</loc>
+    <lastmod>2020-06-12T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://hungpham2511.github.io/org-publish/</loc>
+    <lastmod>2020-06-12T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hungpham2511.github.io/org-publish/pages/</loc>
+    <loc>https://hungpham2511.github.io/org-publish/categories/hugo/</loc>
+    <lastmod>2020-06-12T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://hungpham2511.github.io/org-publish/posts/</loc>
+    <lastmod>2020-06-12T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hungpham2511.github.io/org-publish/transforming-notes-to-blog-posts/</loc>
+    <lastmod>2020-06-12T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hungpham2511.github.io/org-publish/about/</loc>
   </url>
   
   <url>
     <loc>https://hungpham2511.github.io/org-publish/tags/</loc>
-  </url>
-  
-  <url>
-    <loc>https://hungpham2511.github.io/org-publish/pages/abc/</loc>
-  </url>
-  
-  <url>
-    <loc>https://hungpham2511.github.io/org-publish/posts/20200403080059-transforming_note_to_blog_posts/</loc>
-  </url>
-  
-  <url>
-    <loc>https://hungpham2511.github.io/org-publish/posts/abc/</loc>
   </url>
   
 </urlset>

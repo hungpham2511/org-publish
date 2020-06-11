@@ -1,67 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
+    <title>Posts on Hung&#39;s Org Notes</title>
     <link>https://hungpham2511.github.io/org-publish/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <description>Recent content in Posts on Hung&#39;s Org Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 12 Jun 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://hungpham2511.github.io/org-publish/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     
     <item>
-      <title>DSP 1: The absolute fundamentals</title>
-      <link>https://hungpham2511.github.io/org-publish/posts/discrete-time-control/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Transforming notes to blog posts</title>
+      <link>https://hungpham2511.github.io/org-publish/transforming-notes-to-blog-posts/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0800</pubDate>
       
-      <guid>https://hungpham2511.github.io/org-publish/posts/discrete-time-control/</guid>
-      <description>In this short note, I recap the absolute minimum understanding to work with discrete-time signals and systems. These are by no mean complete, and might not be completely technically correct, as sometimes it&amp;rsquo;s easier to state a less precise statement for the sake of clarity. Now, for a very nice course on this topic have a look at [this MIT open courseware][1] or this [coursera course from EPFL][coursera]
-Discrete-time signal A discrete-time signal \(x[n]\) is essentially an array of floats.</description>
+      <guid>https://hungpham2511.github.io/org-publish/transforming-notes-to-blog-posts/</guid>
+      <description>Table of Contents  Why? Solution Citations    Why? Keeping lots of notes I keep a lots of notes with many different ideas and thoughts, but they are not well maintained. As a result, they are not very useful for myself or for others. Turning some of these notes into blog posts can be useful.
+Also publish writings is a great way to force one to polish the skill, to focus on making concise ideas and to improve the clarity of one&amp;rsquo;s own ideas.</description>
     </item>
     
     
-    
-    <item>
-      <title>DSP 2: Continuous-time and Discrete-time Systems</title>
-      <link>https://hungpham2511.github.io/org-publish/posts/20200611132621-dsp_2_systems/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://hungpham2511.github.io/org-publish/posts/20200611132621-dsp_2_systems/</guid>
-      <description>Continuous time system, s-domain. With the basis in physics, allowing physical intuition that aids understanding.
-Discrete time system z-domain. Allow fast and convenient implementation for digital computational systems.
-Conversion with bilinear transform.
-Frequency response of continuous time system G(s) is basically G(jw) where w is the angular velocity in radian per second.
-Frequency response of discrete time system H(z) is different, as there is no notion of seconds,
-H(ejw), where 0 &amp;lt;= w &amp;lt;= 2pi</description>
-    </item>
-    
-    
-    
-    
-    
-    <item>
-      <title>Transforming note to blog posts</title>
-      <link>https://hungpham2511.github.io/org-publish/posts/20200403080059-transforming_note_to_blog_posts/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://hungpham2511.github.io/org-publish/posts/20200403080059-transforming_note_to_blog_posts/</guid>
-      <description>Writing blog is a great way to force myself to polish the writings, improving my notes in term of writing, clarity and idea. I keep a lots of notes with many different ideas and thoughts, but they are not well maintained. As a result, they are not very useful for myself or for others. Turning these notes into blog posts are a great way.
-However, the blog posts I am working on is somewhat detached from my own org system.</description>
-    </item>
-    
-    
-    
-    <item>
-      <title>Transforming note to blog posts</title>
-      <link>https://hungpham2511.github.io/org-publish/posts/abc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://hungpham2511.github.io/org-publish/posts/abc/</guid>
-      <description>Writing blog is a great way to force myself to polish the writings, improving my notes in term of writing, clarity and idea. I keep a lots of notes with many different ideas and thoughts, but they are not well maintained. As a result, they are not very useful for myself or for others. Turning these notes into blog posts are a great way.
-However, the blog posts I am working on is somewhat detached from my own org system.</description>
-    </item>
     
     
   </channel>

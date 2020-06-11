@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My collection of notes polished enough to be published online.">
+    
+    <link rel="shortcut icon" href="https://hungpham2511.github.io/org-publish/favicon.ico">
+    
+    <link rel="stylesheet" href="/org-publish/css/style.min.css">
+
+    <title>Transforming notes to blog posts</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://hungpham2511.github.io/org-publish/">Hung&#39;s Org Notes</a></h2>
+    <nav>
+        <ul>
+            <li><a href="https://hungpham2511.github.io/org-publish/">posts</a></li>
+            
+            <li>
+                <a href="https://hungpham2511.github.io/org-publish/about/">About</a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Transforming notes to blog posts</h1><time>June 12, 2020</time></header><div class="ox-hugo-toc toc">
+<div></div>
+<div class="heading">Table of Contents</div>
+<ul>
+<li><a href="#why">Why?</a></li>
+<li><a href="#solution">Solution</a></li>
+<li><a href="#citations">Citations</a></li>
+</ul>
+</div>
+<!--endtoc-->
+<h2 id="why">Why?</h2>
+<p>Keeping lots of notes I keep a lots of notes with many different ideas
+and thoughts, but they are not well maintained. As a result, they are
+not very useful for myself or for others. Turning some of these notes
+into blog posts can be useful.</p>
+<p>Also publish writings is a great way to force one to polish the skill,
+to focus on making concise ideas and to improve the clarity of one&rsquo;s
+own ideas.</p>
+<p>However, the blog posts I am working on is somewhat detached from my
+own org system. It&rsquo;s this system that contains the knowledge. It&rsquo;s
+only natural to have the blog posts to be <strong>another view</strong> of the
+knowledge base, or the main system. Put it this way, the blog posts
+are basically outlet of notes that I am happy about. Period. Nothing
+more and certainly nothing less.</p>
+<h2 id="solution">Solution</h2>
+<p>The solution is a way to publish new blog posts directly from the org
+notes. Put it in another way, I need to <strong>publish my org notes</strong>.</p>
+<p>I use <a href="https://github.com/kaushalmodi/ox-hugo">ox-hugo</a> to generate new blog posts in markdown.  For each org
+note that is to be published, fill in the front matter When satisfied
+with the note, use `org-export` (C-c C-e H h) to generate the markdown
+post.</p>
+<div class="highlight"><pre class="chroma"><code class="language-org" data-lang="org"><span class="cs">#+TITLE</span><span class="c">: Transforming note to blog posts</span>
+<span class="cs">#+HUGO_SECTION</span><span class="c">: posts</span>
+<span class="cs">#+HUGO_CATEGORIES</span><span class="c">: blog hugo</span>
+<span class="cs">#+HUGO_BASE_DIR</span><span class="c">: publish</span>
+<span class="cs">#+DATE</span><span class="c">: 2020-06-12</span>
+<span class="cs">#+toc</span><span class="c">: headlines 2</span>
+</code></pre></div><p>To preview the site</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/org/publish <span class="o">&amp;&amp;</span> hugo serve
+</code></pre></div><p>To build and deploy the site</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/org/publish <span class="o">&amp;&amp;</span> ./deploy.sh
+</code></pre></div><h2 id="citations">Citations</h2>
+<p>Apparently pandoc and pandoc-citeproc can be used to generate
+<a href="https://ox-hugo.scripter.co/doc/pandoc-citations/">citation</a>, but currently I am not sure how to do that.</p>
+<p><a href="">HowToTakeSmartNotesBook</a>.</p>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Hung Pham
+    
+<script src="https://hungpham2511.github.io/org-publish/js/mathjax-config.js"></script>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+</footer>
+</body>
+</html>
