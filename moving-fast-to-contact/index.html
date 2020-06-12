@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My collection of notes polished enough to be published online.">
+    
+    <link rel="shortcut icon" href="https://hungpham2511.github.io/org-publish/favicon.ico">
+    
+    <link rel="stylesheet" href="/org-publish/css/style.min.css">
+
+    <title>Moving fast to contact</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://hungpham2511.github.io/org-publish/">Hung&#39;s Org Notes</a></h2>
+    <nav>
+        <ul>
+            <li><a href="https://hungpham2511.github.io/org-publish/">posts</a></li>
+            
+            <li>
+                <a href="https://hungpham2511.github.io/org-publish/about/">About</a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Moving fast to contact</h1><time>June 12, 2020</time></header><div class="ox-hugo-toc toc">
+<div></div>
+<div class="heading">Table of Contents</div>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#deriving-the-optimal-contact-force">Deriving the optimal contact force</a></li>
+<li><a href="#linear-control-law">Linear control law</a></li>
+<li><a href="#ccs">CCS?</a></li>
+<li><a href="#a-high-level-control-law">A high-level control law</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#related">Related</a></li>
+</ul>
+</div>
+<!--endtoc-->
+<h2 id="introduction">Introduction</h2>
+<p>Consider the following problem: a position control robot, moving to
+make contact with a stiff, spring-like environment with stiffness \(K\),</p>
+<ul>
+<li>what is the fastest speed \(v\) that the robot can move down without
+incurring large force, assuming that the robot has a time-delay of
+\(T\)?</li>
+<li>What is the best strategy for moving down?</li>
+</ul>
+<h2 id="deriving-the-optimal-contact-force">Deriving the optimal contact force</h2>
+<p>Consider the following naive, but optimal, strategy: Robot moves down
+with velocity \(v\), and stops immediately when it measures a small
+force. At this instance, the robot has actually been in contact with
+the surface for \(T\) seconds.  Following this strategy, the robot will
+stop exactly \(T\) seconds after it actually is in contact, the contact
+force is therefore \[ F_{\max} = T v K \]</p>
+<p>Suppose \(T\) is 10ms, \(K\) is 50 N/mm we have
+\[
+F_{\max} = 0.01 * 50 v = 0.5v
+\]
+where \(v\) is in mm per seconds. That is to say if the robot moves down
+at 20 mm/s, the smallest force that it can receive is 10N.</p>
+<p>Summary: If the time-delay is 10ms, the smallest possible force one
+can obtain for every 1mm/s of velocity is 0.5N</p>
+<p>Is this strategy <strong>reasonable</strong>? Notice that the robot has to make the
+decision to stop even when the measured force is very small. If the
+robot is actually under a linear control law, which usually produce
+small input command given small force measurement, this means the gain
+must be very large. In most case, this would lead to instability. This
+argument applies too all linear controllers.</p>
+<h2 id="linear-control-law">Linear control law</h2>
+<p>It&rsquo;s interesting to see what is the maximum force given a velocity
+command.  We can try out some simulation. Suppose the robot is under a
+linear control law: \[ v = K_g (f_d - f) + v_d.\]</p>
+<p>The system (robot/environment) dynamics is given by two equations: \[
+x = e^{-T s} \frac{v}{s}, f = K x \] We can then simulate the instance
+to find the maximum force exerted on the robot as it moves down.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">control</span> <span class="kn">as</span> <span class="nn">co</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">co</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">co</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1e-3</span><span class="p">)</span>
+<span class="c1"># x = G v</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">z</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="n">co</span><span class="o">.</span><span class="n">c2d</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">s</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">)</span>
+
+
+<span class="n">ymax</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">gains</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">gain</span> <span class="ow">in</span> <span class="n">gains</span><span class="p">:</span>
+    <span class="c1"># f * H = G g f_d + v_d</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">50.0</span> <span class="o">+</span> <span class="n">G</span> <span class="o">*</span> <span class="n">gain</span>
+    <span class="c1"># f = M v_d</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">G</span> <span class="o">/</span> <span class="n">H</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">co</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">))</span>
+
+    <span class="c1"># plt.plot(y)</span>
+    <span class="c1"># plt.show()</span>
+    <span class="n">ymax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gains</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;gain&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;max force amplitude&#34;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;gain-force-compare.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div><p><a id="org00a3a58"></a></p>
+<figure>
+    <img src="/ox-hugo/gain-force-compare.png"
+         alt="Figure 1: Maximum reaction force when moving at 1mm/s at different linear gain"/> <figcaption>
+            <p>Figure 1: Maximum reaction force when moving at 1mm/s at different linear gain</p>
+        </figcaption>
+</figure>
+
+<p>It should be noted that at gain around 2.0, the system exhibit dynamic
+instability.</p>
+<p>From this graph, it&rsquo;s clear that the more reponsive the robot is, the
+smaller force it feels. This is quite intuitive. What is perharp less
+intuitive is that if the gain is too small, the robot might feels a
+very large force because it&rsquo;s not <strong>fast enough</strong> to react to the
+measurement.</p>
+<h2 id="ccs">CCS?</h2>
+<p>Optimizing a controller specifically for reducing the maximum force
+using <a href="">ConvexControllerSynthesis</a> is an interesting idea. I tried it
+out and manage to reach approximately 1N minimum force.  The
+resulting controller, however, is not at all optimized for other
+objectives. Thus, it is not suitable for other purposes.</p>
+<h2 id="a-high-level-control-law">A high-level control law</h2>
+<p>From the previous two sections, it seems like designing a single
+controller that allows fast movement in freespace and stability and
+performance in contact is simply impossible.</p>
+<p>Applying a high-level control law, on the other hand, can achieve
+high-performance contact very easily. Consider the following simple
+high-level control law:</p>
+<ol>
+<li>
+<p>move down with speed 20mm/s, f_d = 0;</p>
+</li>
+<li>
+<p>when in contact immediately switch velocity back to 0mm/s and f_d = 1N;</p>
+</li>
+<li>
+<p>similarly, we can adjust the reference velocity based on the
+measure force. For example we can have:</p>
+<pre><code class="language-nil" data-lang="nil">if f &gt; 5: v_d = 0
+else: v_d = 4 * (5 - f)
+</code></pre></li>
+</ol>
+<p>This control law gonna work just fine without much trouble. Putting
+together with a linear controller, we thus have a simple
+<strong>non-linear</strong> control law that will perform relatively well.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Even for the very simple task of making contact as fast as possible,
+we learn that a high-level control strategy is
+indispensible. Low-level control laws, i.e. CCS or linear
+controllers, are insufficient to guarantee high performance.</p>
+<p>For more complex task, such as 1 pin insertion, 2 pins insertion
+slanted pin, it is clear that a good high-level control strategy is
+even more important. Thus it would be very interesting to study this
+question more closely.</p>
+<p><strong>Question for future inquiry</strong>:</p>
+<ul>
+<li>How efficiently can a neural network, or a blackbox optimization
+algorithm can learn new strategy?</li>
+<li>Can we combine strategy?</li>
+<li>Can we use joint current instead of force signal? Since the system
+limits are in the robot dynamics and not the measurement, maybe
+it&rsquo;s possible to do very well even with crappy sensor
+measurements (Robotiq, joint current).</li>
+</ul>
+<h2 id="related">Related</h2>
+<p><a href="">ConvexControllerSynthesis</a></p>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Hung Pham
+    
+<script src="https://hungpham2511.github.io/org-publish/js/mathjax-config.js"></script>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+</footer>
+</body>
+</html>

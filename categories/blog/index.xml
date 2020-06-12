@@ -13,13 +13,36 @@
     
     
     <item>
+      <title>DSP 1: The absolute fundamentals</title>
+      <link>https://hungpham2511.github.io/org-publish/dsp-1-the-absolute-fundamentals/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://hungpham2511.github.io/org-publish/dsp-1-the-absolute-fundamentals/</guid>
+      <description>Table of Contents  Discrete-time signal Linear time-invariant discrete-time system Convolution Operation and the Impulse Response Conclusion Related    In this short note, I recap the absolute minimum understanding to work with discrete-time signals and systems. These are by no mean complete, and might not be completely technically correct, as sometimes it&amp;rsquo;s easier to state a less precise statement for the sake of clarity. Now, for a very nice course on this topic have a look at [this MIT open courseware][1] or this [coursera course from EPFL][coursera]</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Moving fast to contact</title>
+      <link>https://hungpham2511.github.io/org-publish/moving-fast-to-contact/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://hungpham2511.github.io/org-publish/moving-fast-to-contact/</guid>
+      <description>Table of Contents  Introduction Deriving the optimal contact force Linear control law CCS? A high-level control law Conclusion Related    Introduction Consider the following problem: a position control robot, moving to make contact with a stiff, spring-like environment with stiffness \(K\),
+ what is the fastest speed \(v\) that the robot can move down without incurring large force, assuming that the robot has a time-delay of \(T\)?</description>
+    </item>
+    
+    
+    
+    <item>
       <title>Transforming notes to blog posts</title>
       <link>https://hungpham2511.github.io/org-publish/transforming-notes-to-blog-posts/</link>
       <pubDate>Fri, 12 Jun 2020 00:00:00 +0800</pubDate>
       
       <guid>https://hungpham2511.github.io/org-publish/transforming-notes-to-blog-posts/</guid>
-      <description>Table of Contents  Why? Solution Citations    Why? Keeping lots of notes I keep a lots of notes with many different ideas and thoughts, but they are not well maintained. As a result, they are not very useful for myself or for others. Turning some of these notes into blog posts can be useful.
-Also publish writings is a great way to force one to polish the skill, to focus on making concise ideas and to improve the clarity of one&amp;rsquo;s own ideas.</description>
+      <description>Table of Contents  Why? Solution Handling citations    Why? I keep a lots of notes containing different ideas and thoughts, but they are not well maintained. As a result, they are not very useful for myself or for others. It would be great if if these notes can be polished and made available online.
+Currently my personal site is made with Jekyll. However, it&amp;rsquo;s quite difficult to automatically generate org notes to blog posts in Jekyll.</description>
     </item>
     
     

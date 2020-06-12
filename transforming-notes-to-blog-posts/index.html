@@ -32,31 +32,28 @@
 <ul>
 <li><a href="#why">Why?</a></li>
 <li><a href="#solution">Solution</a></li>
-<li><a href="#citations">Citations</a></li>
+<li><a href="#handling-citations">Handling citations</a></li>
 </ul>
 </div>
 <!--endtoc-->
 <h2 id="why">Why?</h2>
-<p>Keeping lots of notes I keep a lots of notes with many different ideas
-and thoughts, but they are not well maintained. As a result, they are
-not very useful for myself or for others. Turning some of these notes
-into blog posts can be useful.</p>
-<p>Also publish writings is a great way to force one to polish the skill,
-to focus on making concise ideas and to improve the clarity of one&rsquo;s
-own ideas.</p>
-<p>However, the blog posts I am working on is somewhat detached from my
-own org system. It&rsquo;s this system that contains the knowledge. It&rsquo;s
-only natural to have the blog posts to be <strong>another view</strong> of the
-knowledge base, or the main system. Put it this way, the blog posts
-are basically outlet of notes that I am happy about. Period. Nothing
-more and certainly nothing less.</p>
+<p>I keep a lots of notes containing different ideas and thoughts, but
+they are not well maintained. As a result, they are not very useful
+for myself or for others. It would be great if if these notes can be
+polished and made available online.</p>
+<p>Currently my personal site is made with <a href="https://jekyllrb.com/docs/posts/">Jekyll</a>. However, it&rsquo;s quite
+difficult to automatically generate org notes to blog posts in
+Jekyll. Need to try something else.</p>
 <h2 id="solution">Solution</h2>
-<p>The solution is a way to publish new blog posts directly from the org
-notes. Put it in another way, I need to <strong>publish my org notes</strong>.</p>
-<p>I use <a href="https://github.com/kaushalmodi/ox-hugo">ox-hugo</a> to generate new blog posts in markdown.  For each org
-note that is to be published, fill in the front matter When satisfied
-with the note, use `org-export` (C-c C-e H h) to generate the markdown
-post.</p>
+<p>I use <a href="https://github.com/kaushalmodi/ox-hugo">ox-hugo</a> to generate new blog posts in markdown.  The concept is
+quite simple. The org files are first exported to markdown files. Then
+hugo builds the html site from these markdown files, which is then
+deployed using Github pages.</p>
+<p>In particular, for each org note that is to be published, fill in the
+front matter as shown below. When satisfied with the note, use
+`org-export` (C-c C-e H h) to generate the markdown post. After doing
+this, there should be a new mardown file in `publish\content\posts`
+with the same name as the org file but in hugo markdown format.</p>
 <div class="highlight"><pre class="chroma"><code class="language-org" data-lang="org"><span class="cs">#+TITLE</span><span class="c">: Transforming note to blog posts</span>
 <span class="cs">#+HUGO_SECTION</span><span class="c">: posts</span>
 <span class="cs">#+HUGO_CATEGORIES</span><span class="c">: blog hugo</span>
@@ -67,7 +64,7 @@ post.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/org/publish <span class="o">&amp;&amp;</span> hugo serve
 </code></pre></div><p>To build and deploy the site</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/org/publish <span class="o">&amp;&amp;</span> ./deploy.sh
-</code></pre></div><h2 id="citations">Citations</h2>
+</code></pre></div><h2 id="handling-citations">Handling citations</h2>
 <p>Apparently pandoc and pandoc-citeproc can be used to generate
 <a href="https://ox-hugo.scripter.co/doc/pandoc-citations/">citation</a>, but currently I am not sure how to do that.</p>
 <p><a href="">HowToTakeSmartNotesBook</a>.</p>
