@@ -41,8 +41,9 @@
       <pubDate>Fri, 12 Jun 2020 00:00:00 +0800</pubDate>
       
       <guid>https://hungpham2511.github.io/org-publish/transforming-notes-to-blog-posts/</guid>
-      <description>Table of Contents  Why? Solution Handling citations    Why? I keep a lots of notes containing different ideas and thoughts, but they are not well maintained. As a result, they are not very useful for myself or for others. It would be great if if these notes can be polished and made available online.
-Currently my personal site is made with Jekyll. However, it&amp;rsquo;s quite difficult to automatically generate org notes to blog posts in Jekyll.</description>
+      <description>Table of Contents
+  Why? Hugo Handling citations Related    Why? I keep a lots of notes containing different ideas, thoughts and exploratory pieces; but they are not well maintained. Hence, they are not as useful for myself or for others as they can be. I think it would be great if these notes can be polished and made available online.
+Currently my personal site is made with Jekyll, which is a really powerful framework for static site and definitely can do things that I surely would neve need.</description>
     </item>
     
     
